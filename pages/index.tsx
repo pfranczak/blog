@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Post } from '../types/posts';
-import { PostCard } from '../components';
+import { Categories, PostCard, PostWidget } from '../components';
 
 const posts: Post[] = [
     { title: 'Very interesting post', excerpt: 'And its description' },
@@ -26,7 +26,8 @@ const Home: NextPage = () => {
           </div>
           <div className="lg:col-span-4 col-span-1">
               <div className="lg:sticky relative top-8">
-
+                    <PostWidget/>
+                    <Categories/>
               </div>
           </div>
       </main>
