@@ -11,7 +11,9 @@ export default function Home({ posts }: { posts: Edge[] }) {
         <title>Przemek Franczak Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <div id='stars'/>
+      <div id='stars2'/>
+      <div id='stars3'/>
       <main className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-8 col-span-1">
               {posts.map(post =>

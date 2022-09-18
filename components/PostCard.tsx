@@ -6,7 +6,6 @@ type Props = {
 }
 
 const PostCard = (props: Props) => {
-  console.log(props.post.title)
     return (
         <div>
             <h1>{props.post.title}</h1>
