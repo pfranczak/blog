@@ -21,6 +21,7 @@ export interface Post {
 	slug: string;
 	id: string;
 	excerpt: string;
+	image: Photo;
 	categories: Category[];
 }
 

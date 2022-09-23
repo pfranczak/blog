@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tanstack/react-query": "4.3.4",
+    "@tanstack/react-query-devtools": "4.3.5",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
     "html-react-parser": "^3.0.4",
@@ -14,8 +16,7 @@
     "react-dom": "18.1.0",
     "react-multi-carousel": "^2.8.2",
     "sass": "^1.54.8",
-    "@tanstack/react-query": "4.3.4",
-    "@tanstack/react-query-devtools": "4.3.5"
+    "use-reading-time": "^0.3.0"
   },
   "devDependencies": {
     "@types/node": "17.0.35",

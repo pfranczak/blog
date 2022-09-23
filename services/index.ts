@@ -26,6 +26,9 @@ export const getPosts = async () => {
                   name
                   slug
                 }
+                image {
+                    url
+                }
               }
             }
           }
