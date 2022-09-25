@@ -1,11 +1,11 @@
 import { request, gql } from 'graphql-request';
-import { PostResponse } from './dto';
+import { PostResponse, RecentPost, RecentPostsResponse } from './dto';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
 export const getPosts = async () => {
     const query = gql`
-        query MyQuery {
+        query GetPosts {
           postsConnection {
             edges {
               node {
@@ -29,6 +29,9 @@ export const getPosts = async () => {
                 image {
                     url
                 }
+                content {
+                    text
+                }
               }
             }
           }
@@ -38,3 +41,47 @@ export const getPosts = async () => {
     const result = await request<PostResponse>(graphqlAPI, query);
     return result.postsConnection.edges;
 }
+
+export const getSimilarPosts = async (categories: string[], slug: string) => {
+    const query = gql`
+        query GetSimilarPosts($slug: String!, $categories: [String!]) {
+            posts(
+                where: { slug_not: $slug AND: { categories_some: { slug_in: $categories } } },
+                last: 3
+            ) {
+                title
+                createdAt
+                slug
+              }
+            }
+        }
+    `;
+
+    const result = await request<PostResponse>(graphqlAPI, query, { slug, categories });
+
+    return result;
+}
+
+export const getRecentPosts = async () => {
+    const query = gql`
+    query GetRecentPosts() {
+      posts(
+        orderBy: createdAt_ASC
+        last: 3
+      ) {
+        title
+        createdAt
+        slug
+        excerpt
+        image {
+            url
+        }
+        content {
+            text
+        }
+      }
+    }
+  `;
+
+    return await request<RecentPostsResponse>(graphqlAPI, query);
+};

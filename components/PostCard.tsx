@@ -2,14 +2,15 @@ import React from 'react';
 import { Post } from '../services/dto';
 import Link from 'next/link';
 import useReadTime from '../hooks/useReadTime';
+import FormattedDate from './common/Date';
 
 type Props = {
     post: Post
 }
 
-const PostCard = ({ post: { image, title, slug, excerpt, createdAt } }: Props) => {
-    const { time, unit } = useReadTime(excerpt);
-    const TIME_OPTIONS = { year: 'numeric', month: 'long', day: 'numeric' };
+const PostCard = ({ post: { image, title, slug, excerpt, content: { text }, createdAt } }: Props) => {
+    const { time, unit } = useReadTime(text);
+
     return (
         <div className="bg-white shadow-lg rounded-lg p-3 lg:p-8 pb-12 mb-8">
            <div className="relative overflow-hidden shadow-md pb-80 mb-6">
@@ -20,7 +21,7 @@ const PostCard = ({ post: { image, title, slug, excerpt, createdAt } }: Props) =
             <h1 className="transition duration-700 mb-0 cursor-pointer hover:text-pink-600 text-3xl font-semibold">
               <Link href={`/post/${slug}`}>{title}</Link>
             </h1>
-            <span className="align-middle">{new Date(createdAt).toLocaleDateString("en-US", TIME_OPTIONS)} - {time} {unit} read</span>
+            <span className="align-middle"><FormattedDate date={createdAt}/> - {time} {unit} read</span>
           </div>
           <p className="text-justify text-base text-gray-700 font-normal mt-5 mb-2 ">
             {excerpt} <Link href={`/post/${slug}`}>
