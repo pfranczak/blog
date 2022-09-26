@@ -1,5 +1,5 @@
 import { request, gql } from 'graphql-request';
-import { CategoriesResponse, PostResponse, RecentPost, RecentPostsResponse } from './dto';
+import { CategoriesResponse, PostDetailsResponse, PostResponse, RecentPost, RecentPostsResponse } from './dto';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
@@ -88,7 +88,7 @@ export const getRecentPosts = async () => {
 
 
 export const getCategories = async () => {
-    const query = gql`
+  const query = gql`
         query GetCategories {
             categories {
                 name
@@ -97,5 +97,41 @@ export const getCategories = async () => {
         }
     `;
 
-    return await request<CategoriesResponse>(graphqlAPI, query);
+  return await request<CategoriesResponse>(graphqlAPI, query);
 }
+
+export const getPostDetails = async (slug: String) => {
+    const query = gql`
+        query GetPostDetails($slug : String!) {
+          post(where: {slug: $slug}) {
+            author {
+              bio
+              name
+              id
+              photo {
+                url
+              }
+            }
+            createdAt
+            title
+            slug
+            id
+            excerpt
+            categories {
+              name
+              slug
+            }
+            image {
+                url
+            }
+            content {
+                text
+            }
+          }
+        }
+  `;
+
+    const result = await request<PostDetailsResponse>(graphqlAPI, query, { slug });
+
+    return result.post;
+};

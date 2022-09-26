@@ -60,3 +60,7 @@ export interface RecentPostsResponse {
 export interface CategoriesResponse {
 	categories: Category[]
 }
+
+export interface PostDetailsResponse {
+	post: Post
+}
