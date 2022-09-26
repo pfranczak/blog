@@ -1,5 +1,5 @@
 import { request, gql } from 'graphql-request';
-import { PostResponse, RecentPost, RecentPostsResponse } from './dto';
+import { CategoriesResponse, PostResponse, RecentPost, RecentPostsResponse } from './dto';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
@@ -64,24 +64,38 @@ export const getSimilarPosts = async (categories: string[], slug: string) => {
 
 export const getRecentPosts = async () => {
     const query = gql`
-    query GetRecentPosts() {
-      posts(
-        orderBy: createdAt_ASC
-        last: 3
-      ) {
-        title
-        createdAt
-        slug
-        excerpt
-        image {
-            url
+        query GetRecentPosts() {
+          posts(
+            orderBy: createdAt_ASC
+            last: 3
+          ) {
+            title
+            createdAt
+            slug
+            excerpt
+            image {
+                url
+            }
+            content {
+                text
+            }
+          }
         }
-        content {
-            text
-        }
-      }
-    }
   `;
 
     return await request<RecentPostsResponse>(graphqlAPI, query);
 };
+
+
+export const getCategories = async () => {
+    const query = gql`
+        query GetCategories {
+            categories {
+                name
+                slug
+            }
+        }
+    `;
+
+    return await request<CategoriesResponse>(graphqlAPI, query);
+}

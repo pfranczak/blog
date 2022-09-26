@@ -56,3 +56,7 @@ export interface RecentPost {
 export interface RecentPostsResponse {
 	posts: RecentPost[]
 }
+
+export interface CategoriesResponse {
+	categories: Category[]
+}

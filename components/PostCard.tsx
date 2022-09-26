@@ -18,7 +18,7 @@ const PostCard = ({ post: { image, title, slug, excerpt, content: { text }, crea
                    className="object-center absolute h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg"/>
            </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
-            <h1 className="transition duration-700 mb-0 cursor-pointer hover:text-pink-600 text-3xl font-semibold">
+            <h1 className="transition duration-200 mb-0 cursor-pointer hover:text-blue-500 text-3xl font-semibold">
               <Link href={`/post/${slug}`}>{title}</Link>
             </h1>
             <span className="align-middle"><FormattedDate date={createdAt}/> - {time} {unit} read</span>
