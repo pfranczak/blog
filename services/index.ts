@@ -52,14 +52,18 @@ export const getSimilarPosts = async (categories: string[], slug: string) => {
                 title
                 createdAt
                 slug
+                excerpt
+                image {
+                    url
+                }
+                content {
+                    text
+                }
               }
-            }
         }
     `;
 
-    const result = await request<PostResponse>(graphqlAPI, query, { slug, categories });
-
-    return result;
+    return await request<RecentPostsResponse>(graphqlAPI, query, { slug, categories });
 }
 
 export const getRecentPosts = async () => {

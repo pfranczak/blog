@@ -6,7 +6,7 @@ import Link from 'next/link';
 import useReadTime from '../hooks/useReadTime';
 
 type Props = {
-  categories: string[];
+  categories?: string[];
   slug?: string;
 }
 
@@ -14,8 +14,8 @@ const PostWidget = ({ categories, slug }: Props) => {
   const [relatedPosts, setRelatedPosts] = useState<RecentPost[]>([]);
 
     useEffect(() => {
-      if (slug) {
-        getSimilarPosts(categories, slug).then(res => console.log(res));
+      if (slug && categories) {
+        getSimilarPosts(categories, slug).then(res => setRelatedPosts(res.posts));
       } else {
         getRecentPosts().then(res => setRelatedPosts(res.posts));
       }

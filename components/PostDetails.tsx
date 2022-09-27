@@ -19,12 +19,12 @@ const PostDetails = ({ post: { image, title, slug, createdAt, content: { text },
 			</div>
 			<div className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
 				<div>
-					<h1 className="transition duration-200 mb-0 cursor-pointer hover:text-blue-500 text-3xl font-semibold">
-						<Link href={`/post/${slug}`}>{title}</Link>
+					<h1 className="mb-0 text-3xl font-semibold">
+						{title}
 					</h1>
 					<FormattedDate date={createdAt}/> - {time} {unit} read
 				</div>
-				<div className="flex justify-content-end items-center text-md transition duration-200 mb-0 cursor-pointer hover:text-blue-500">
+				<div className="hidden lg:flex justify-content-end items-center text-md transition duration-200 mb-0 cursor-pointer hover:text-blue-500">
 					<span className="" style={{ width: 96, textAlign: 'right' }}>
 						<Link href={`/author/${author.id}`}>{author.name}</Link>
 					</span>
