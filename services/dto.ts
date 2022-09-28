@@ -16,6 +16,7 @@ export interface Category {
 
 export interface Content {
 	text: string;
+	markdown: string;
 }
 
 export interface Post {

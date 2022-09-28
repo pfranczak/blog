@@ -3,12 +3,13 @@ import Link from 'next/link';
 import FormattedDate from './common/Date';
 import { Post } from '../services/dto';
 import useReadTime from '../hooks/useReadTime';
+import ReactMarkdown from 'react-markdown';
 
 type Props = {
 	post: Post
 }
 
-const PostDetails = ({ post: { image, title, slug, createdAt, content: { text }, author } }: Props) => {
+const PostDetails = ({ post: { image, title, slug, createdAt, content: { text, markdown }, author } }: Props) => {
 	const { time, unit } = useReadTime(text);
 
 	const name = author.name.toLowerCase().replace(' ', '-');
@@ -35,7 +36,9 @@ const PostDetails = ({ post: { image, title, slug, createdAt, content: { text },
 				</div>
 			</div>
 			<p className="text-justify text-base text-gray-700 font-normal mt-5 mb-2 ">
-				{text}
+				<ReactMarkdown>
+					{markdown}
+				</ReactMarkdown>
 			</p>
 		</div>
 	);

@@ -5,7 +5,6 @@ import {
   CategoriesResponse,
   PostDetailsResponse,
   PostResponse,
-  RecentPost,
   RecentPostsResponse
 } from './dto';
 
@@ -38,6 +37,7 @@ export const getPosts = async () => {
                     url
                 }
                 content {
+                    markdown
                     text
                 }
               }
@@ -113,6 +113,7 @@ export const getPostsFromCategory = async (category: string) => {
                 }
                 content {
                     text
+                    markdown
                 }
               }
         }
@@ -160,6 +161,7 @@ export const getPostDetails = async (slug: String) => {
             }
             content {
                 text
+                markdown
             }
           }
         }
