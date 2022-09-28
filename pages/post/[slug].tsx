@@ -27,7 +27,7 @@ const PostDetailsPage = (props: Props) => {
 	);
 };
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { slug: string } }) {
 	const data = await getPostDetails(params.slug);
 
 	return {

@@ -29,7 +29,7 @@ function capitalizeFirstLetter(text: String) {
 	return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { name: string } }) {
 	const name = params.name.split('-');
 	name[0] = capitalizeFirstLetter(name[0]);
 	name[1] = capitalizeFirstLetter(name[1]);

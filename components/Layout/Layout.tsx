@@ -7,9 +7,9 @@ const styles = {
   position: 'relative'
 }
 
-const Layout: FC = ({ children }) => {
+const Layout: FC<{ children: JSX.Element }> = ({ children }) => {
     return (
-        <div style={styles}>
+        <div style={styles as any}>
             <Header/>
             {children}
         </div>

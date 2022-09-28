@@ -1,8 +1,14 @@
 import React from 'react';
 
+type Format = {
+	year: string,
+	month: string,
+	day: string,
+}
+
 type Props = {
 	date: string,
-	format?: string
+	format?: Format
 }
 
 const TIME_OPTIONS = { year: 'numeric', month: 'long', day: 'numeric' };

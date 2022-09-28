@@ -27,7 +27,7 @@ const CategoryPosts = ({ posts }: Props) => {
 	);
 };
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params } : { params: { category: string } }) {
 	const { posts } = await getPostsFromCategory(params.category) || [];
 	return {
 		props: {
