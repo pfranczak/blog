@@ -11,6 +11,8 @@ type Props = {
 const PostDetails = ({ post: { image, title, slug, createdAt, content: { text }, author } }: Props) => {
 	const { time, unit } = useReadTime(text);
 
+	const name = author.name.toLowerCase().replace(' ', '-');
+
 	return (
 		<div className="bg-white shadow-lg rounded-lg p-3 lg:p-8 pb-12 mb-8">
 			<div className="relative overflow-hidden shadow-md pb-80 mb-6">
@@ -26,7 +28,7 @@ const PostDetails = ({ post: { image, title, slug, createdAt, content: { text },
 				</div>
 				<div className="hidden lg:flex justify-content-end items-center text-md transition duration-200 mb-0 cursor-pointer hover:text-blue-500">
 					<span className="" style={{ width: 96, textAlign: 'right' }}>
-						<Link href={`/author/${author.id}`}>{author.name}</Link>
+						<Link href={`/author/${name}`}>{author.name}</Link>
 					</span>
 					<img src={author.photo.url} alt={author.name} style={{ height: 60, width: 60 }}
 							 className="object-center object-cover shadow-lg rounded-full ml-2"/>

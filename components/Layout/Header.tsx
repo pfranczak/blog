@@ -16,7 +16,7 @@ const Header = () => {
 
     return (
         <div className="container mx-auto px-10 my-8 flex justify-between">
-            <Link href="/author/przemyslaw-franczak">
+            <Link href="/">
                 <div className="flex cursor-pointer text-white">
                         <Image className="rounded-full" src="/header-image.jpeg" alt="Author's portrait" width="50" height="50"/>
                         <div className="ml-1.5">
