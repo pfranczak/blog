@@ -9,7 +9,7 @@ type Props = {
 	post: Post
 }
 
-const PostDetails = ({ post: { image, title, slug, createdAt, content: { text, markdown }, author } }: Props) => {
+const PostDetails = ({ post: { image, title, createdAt, content: { text, markdown }, author } }: Props) => {
 	const { time, unit } = useReadTime(text);
 
 	const name = author.name.toLowerCase().replace(' ', '-');

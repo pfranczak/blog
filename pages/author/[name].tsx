@@ -45,7 +45,9 @@ export async function getStaticProps({ params }: { params: { name: string } }) {
 export async function getStaticPaths() {
 	const { authors } = await getAuthors();
 	return {
-		paths: authors.map(({ name }) => ({ params: { name } })),
+		paths: authors.map((author) => {
+			const name = author.name.toLowerCase().replace(' ', '-');
+			return { params: { name } }}),
 		fallback: true,
 	};
 }

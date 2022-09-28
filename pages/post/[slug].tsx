@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import { Categories, PostDetails, PostWidget } from '../../components';
 import { getPostDetails, getPosts } from '../../services';
 import { Post } from '../../services/dto';
@@ -14,11 +14,11 @@ const PostDetailsPage = (props: Props) => {
 		<div className="container mx-auto px-10 mb-8">
 			<main className="grid grid-cols-1 lg:grid-cols-12 lg:gap-12">
 				<div className="lg:col-span-8 col-span-1">
-					<PostDetails post={props.post}/>
+					{!!props.post && <PostDetails post={props.post}/>}
 				</div>
 				<div className="lg:col-span-4 col-span-1">
 					<div className="lg:sticky relative top-8">
-						<PostWidget categories={categories} slug={props.post.slug}/>
+						<PostWidget categories={categories} slug={props.post?.slug}/>
 						<Categories/>
 					</div>
 				</div>
