@@ -1,5 +1,13 @@
 import { request, gql } from 'graphql-request';
-import { CategoriesResponse, PostDetailsResponse, PostResponse, RecentPost, RecentPostsResponse } from './dto';
+import {
+  Author,
+  AuthorsResponse,
+  CategoriesResponse,
+  PostDetailsResponse,
+  PostResponse,
+  RecentPost,
+  RecentPostsResponse
+} from './dto';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
@@ -139,3 +147,35 @@ export const getPostDetails = async (slug: String) => {
 
     return result.post;
 };
+
+export const getAuthors = async () => {
+    const query = gql`
+      query GetAuthors {
+        authors {
+          id
+          bio
+          name
+          photo {
+            url
+          }
+        }
+      }`;
+
+    return await request<AuthorsResponse>(graphqlAPI, query);
+}
+
+export const getAuthor = async (name: string) => {
+  const query = gql`
+      query GetAuthorDetails($name : String!) {
+          author(where: {name: $name}) {
+            id
+            bio
+            name
+            photo {
+              url
+            }
+          }
+      }`;
+
+  return await request<{ author: Author }>(graphqlAPI, query, { name });
+}

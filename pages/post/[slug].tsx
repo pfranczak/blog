@@ -8,11 +8,7 @@ type Props = {
 }
 
 const PostDetailsPage = (props: Props) => {
-	useEffect(() => {
-		console.log("PROPS:", props);
-	}, []);
-
-	const categories = props.post.categories.map(c => c.slug);
+	const categories = props?.post?.categories.map(c => c.slug) || [];
 
 	return (
 		<div className="container mx-auto px-10 mb-8">

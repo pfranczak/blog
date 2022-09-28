@@ -64,3 +64,7 @@ export interface CategoriesResponse {
 export interface PostDetailsResponse {
 	post: Post
 }
+
+export interface AuthorsResponse {
+	authors: Author[]
+}
