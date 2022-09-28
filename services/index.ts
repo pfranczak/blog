@@ -98,6 +98,28 @@ export const getRecentPosts = async () => {
     return await request<RecentPostsResponse>(graphqlAPI, query);
 };
 
+export const getPostsFromCategory = async (category: string) => {
+  const query = gql`
+        query GetPostsFromCategory($category: String!) {
+            posts(
+                where: { categories_some: { slug: $category  } }
+            ) {
+                title
+                createdAt
+                slug
+                excerpt
+                image {
+                    url
+                }
+                content {
+                    text
+                }
+              }
+        }
+    `;
+
+  return await request<RecentPostsResponse>(graphqlAPI, query, { category });
+}
 
 export const getCategories = async () => {
   const query = gql`
