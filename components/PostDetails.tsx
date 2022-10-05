@@ -16,7 +16,7 @@ const PostDetails = ({ post: { image, title, createdAt, content: { text, markdow
 	let content = '';
 
 	if (typeof content.replaceAll === 'function') {
-		content = markdown.replaceAll('    ', '').replaceAll('`/\n/\n', '`');
+		content = markdown.split('    ').map(x => x === '' ? '    ' : x).join('');
 	}
 
 	return (
