@@ -20,7 +20,9 @@ SyntaxHighlighter.registerLanguage('markdown', markdown)
 SyntaxHighlighter.registerLanguage('json', json)
 
 
-const MarkdownComponents: object = {
+
+const MarkdownComponents = {
+	//@ts-ignore
 	code({ node, inline, className, ...props }) {
 		const match = /language-(\w+)/.exec(className || '')
 		const hasMeta = node?.data?.meta
@@ -44,11 +46,11 @@ const MarkdownComponents: object = {
 		}
 
 		return match ? (
+			//@ts-ignore
 			<SyntaxHighlighter
 				style={atomDark}
 				language={match[1]}
 				PreTag="div"
-				className="codeStyle"
 				showLineNumbers
 				wrapLines={!!hasMeta}
 				useInlineStyles
@@ -62,11 +64,12 @@ const MarkdownComponents: object = {
 }
 
 type Props = {
-	children: JSX.Element
+	children: string
 }
 
 const Markdown = ({ children }: Props) => {
 	return (
+		//@ts-ignore
 		<ReactMarkdown components={MarkdownComponents}>
 			{children}
 		</ReactMarkdown>
