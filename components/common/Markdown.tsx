@@ -20,7 +20,6 @@ SyntaxHighlighter.registerLanguage('markdown', markdown)
 SyntaxHighlighter.registerLanguage('json', json)
 
 
-
 const MarkdownComponents = {
 	//@ts-ignore
 	code({ node, inline, className, ...props }) {
