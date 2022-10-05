@@ -9,6 +9,8 @@ type Props = {
 	post: Post
 }
 
+const imageStyle = { height: 60, width: 60 };
+
 const PostDetails = ({ post: { image, title, createdAt, content: { text, markdown }, author } }: Props) => {
 	const { time, unit } = useReadTime(text);
 
@@ -36,7 +38,7 @@ const PostDetails = ({ post: { image, title, createdAt, content: { text, markdow
 					<span className="" style={{ width: 96, textAlign: 'right' }}>
 						<Link href={`/author/${name}`}>{author.name}</Link>
 					</span>
-					<img src={author.photo.url} alt={author.name} style={{ height: 60, width: 60 }}
+					<img src={author.photo.url} alt={author.name} style={imageStyle}
 							 className="object-center object-cover shadow-lg rounded-full ml-2"/>
 				</div>
 			</div>
