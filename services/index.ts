@@ -55,7 +55,8 @@ export const getSimilarPosts = async (categories: string[], slug: string) => {
         query GetSimilarPosts($slug: String!, $categories: [String!]) {
             posts(
                 where: { slug_not: $slug AND: { categories_some: { slug_in: $categories } } },
-                last: 3
+                last: 3,
+                orderBy: createdAt_DESC
             ) {
                 title
                 createdAt
@@ -78,7 +79,7 @@ export const getRecentPosts = async () => {
     const query = gql`
         query GetRecentPosts() {
           posts(
-            orderBy: createdAt_ASC
+            orderBy: createdAt_DESC
             last: 3
           ) {
             title
