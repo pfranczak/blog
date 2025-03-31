@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+:root {
+  --animation-time: 45s;
+  --color1: rgb(232 121 249);
+  --color2: rgb(96 165 250);
+  --color3: rgb(94 234 212);
+  --length: 25;
+}
+
+.title:hover {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size:200% 200%;
+    background-position: right center;
+  }
+}
+
+article {
+  ul {
+    margin-left: 15px;
+  }
+  ol {
+    margin-left: 15px;
+  }
+  li {
+    list-style-type: disc;
+  }
+}

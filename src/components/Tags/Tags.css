@@ -1,0 +1,24 @@
+.tag:nth-child(5n) {
+    background-color: #e73c7e;
+    color: white;
+}
+
+.tag:nth-child(5n + 1) {
+    background-color: #23a6d5;
+    color: white;
+}
+
+.tag:nth-child(5n + 2) {
+    background-color: #23d5ab;
+    color: white;
+}
+
+.tag:nth-child(5n + 3) {
+    background-color: #ee7752;
+    color: white;
+}
+
+.tag:nth-child(5n + 4) {
+    background-color: #6A5ACDFF;
+    color: white;
+}
