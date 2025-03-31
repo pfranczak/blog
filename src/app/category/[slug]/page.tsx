@@ -1,8 +1,8 @@
 import { PostPreviewCard } from "@/components/PostPreviewCard/PostPreviewCard";
 import { getPostsFromCategory } from "@/services/caterogies";
 
-export default async function Category({ params }: { params: { slug: string } }) {
-    const slug = await params.slug;
+export default async function Category({ params }: { params: Promise<{ slug: string } >}) {
+    const { slug } = await params;
     const postsObj = await getPostsFromCategory(slug);
 
     if (!postsObj) {

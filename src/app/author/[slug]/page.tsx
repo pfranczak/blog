@@ -1,8 +1,8 @@
 import { getAuthor } from "@/services/authors";
 import Image from 'next/image';
 
-export default async function AuthorPage({ params }: { params: { slug: string } }) {
-  const slug = await params.slug;
+export default async function AuthorPage({ params }: { params: Promise<{ slug: string } >}) {
+  const { slug } = await params;
   const authorObj = await getAuthor(slug);
 
   if (!authorObj) {
