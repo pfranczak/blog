@@ -2,6 +2,7 @@ import { Post } from "@/models/Post";
 import useReadTime from "@/hooks/useReadTime";
 import FormattedDate from "../common/Date";
 import Link from "next/link";
+import Image from "next/image";
 
 interface PostPreviewCardProps {
   post: Post;
@@ -12,7 +13,13 @@ export function PostPreviewCard({ post }: PostPreviewCardProps) {
 
   return (
     <div className="flex flex-col gap-3">
-      <img src={post.image.url} className="h-80"/>
+      <Image 
+        src={post.image.url} 
+        alt={post.title}
+        width={800}
+        height={400}
+        className="h-80 object-cover"
+      />
       <h3 className="text-xl/7 text-gray-600 dark:text-gray-400 sm:truncate sm:text-2xl sm:tracking-tight">
         <FormattedDate date={post.createdAt}/> - {time} {unit}
       </h3>

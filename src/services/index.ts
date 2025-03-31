@@ -43,7 +43,7 @@ export const getPosts = async () => {
     return result.postsConnection.edges;
 }
 
-export const getPostDetails = async (slug: String) => {
+export const getPostDetails = async (slug: string) => {
     const query = gql`
         query GetPostDetails($slug : String!) {
           post(where: {slug: $slug}) {

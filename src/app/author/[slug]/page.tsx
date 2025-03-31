@@ -1,4 +1,3 @@
-import { Author } from "@/components/common/Author";
 import { getAuthor } from "@/services/authors";
 import Image from 'next/image';
 

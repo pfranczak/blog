@@ -19,19 +19,25 @@ SyntaxHighlighter.registerLanguage('scss', scss)
 SyntaxHighlighter.registerLanguage('markdown', markdown)
 SyntaxHighlighter.registerLanguage('json', json)
 
+interface CodeProps {
+	node?: any;
+	className?: string;
+	children?: React.ReactNode;
+	[key: string]: any;
+}
 
 const MarkdownComponents = {
-	//@ts-ignore
-	code({ node, inline, className, ...props }) {
+	// @ts-expect-error - ReactMarkdown types are not complete
+	code({ node, className, ...props }: CodeProps) {
 		const match = /language-(\w+)/.exec(className || '')
 		const hasMeta = node?.data?.meta
 
-		const applyHighlights: object = (applyHighlights: number) => {
+		const applyHighlights = (applyHighlights: number) => {
 			if (hasMeta) {
 				const RE = /{([\d,-]+)}/
 				const metadata = node.data.meta?.replace(/\s/g, '')
 				const strlineNumbers = RE?.test(metadata)
-					? RE?.exec(metadata)![1]!
+					? RE?.exec(metadata)?.[1] ?? '0'
 					: '0'
 				const highlightLines = rangeParser(strlineNumbers)
 				const data: string | null = highlightLines.includes(applyHighlights)
@@ -44,7 +50,7 @@ const MarkdownComponents = {
 		}
 
 		return match ? (
-			//@ts-ignore
+			// @ts-expect-error - SyntaxHighlighter types are not complete
 			<SyntaxHighlighter
 				style={atomDark}
 				language={match[1]}
@@ -67,7 +73,7 @@ type Props = {
 
 const Markdown = ({ children }: Props) => {
 	return (
-		//@ts-ignore
+		// @ts-expect-error - ReactMarkdown types are not complete
 		<ReactMarkdown components={MarkdownComponents}>
 			{children}
 		</ReactMarkdown>

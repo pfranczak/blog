@@ -4,6 +4,7 @@ import Markdown from "@/components/common/Markdown";
 import useReadTime from "@/hooks/useReadTime";
 import { Post } from "@/models/Post";
 import { getPostDetails } from "@/services";
+import Image from "next/image";
 
 import { notFound } from "next/navigation";
 
@@ -25,9 +26,11 @@ export function PostView({ post }: PostViewProps) {
           <Author name={post.author.name} id={post.author.id}/>
         </div>
       </div>
-      <img 
+      <Image 
         src={post.image.url} 
         alt={post.title}
+        width={1200}
+        height={400}
         className="w-full h-[400px] object-cover rounded-lg shadow-lg"
       />
       <Markdown>{post.content.markdown}</Markdown>

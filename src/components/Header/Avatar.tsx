@@ -1,13 +1,16 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Avatar() {
   return (
     <Link href="/" className="flex items-center space-x-4">
-      <img
+      <Image
         src="https://media.graphassets.com/8xnH2wp3TPWBBO04thTH"
         alt="Przemek Franczak"
-        className="rounded-full w-14 h-14 shadow-md"
+        width={56}
+        height={56}
+        className="rounded-full shadow-md"
       />
       <div>
         <span className="text-xl font-semibold title hidden md:block">

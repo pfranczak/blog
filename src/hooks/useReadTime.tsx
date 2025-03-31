@@ -1,5 +1,3 @@
-import React from 'react';
-
 const useReadTime = (text: string) => {
 	const words = text.trim().split(/\s+/).length;
 	const WPM = 238;
