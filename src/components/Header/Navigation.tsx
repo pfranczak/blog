@@ -19,9 +19,9 @@ export function Navigation() {
     <>
       <Drawer isOpen={isOpen} onOutsideClick={toggleOpen}>
         <div className="pt-6 px-8 flex flex-col gap-6 text-3xl">
-          <Link href="/">Home</Link>
-          <Link href={LINKS.author}>About me</Link>
-          <Link href={LINKS.social}>Social media</Link>
+          <Link href="/" onClick={toggleOpen}>Home</Link>
+          <Link href={LINKS.author} onClick={toggleOpen}>About me</Link>
+          <Link href={LINKS.social} onClick={toggleOpen}>Social media</Link>
         </div>
       </Drawer>
       <div className="flex items-center gap-8">
