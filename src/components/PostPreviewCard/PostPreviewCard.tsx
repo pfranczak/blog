@@ -9,7 +9,8 @@ interface PostPreviewCardProps {
 }
 
 export function PostPreviewCard({ post }: PostPreviewCardProps) {
-  const { time, unit } = useReadTime(post.content.text);
+  console.log(post);
+  const { time, unit } = useReadTime(post.content ?? "");
 
   return (
     <div className="flex flex-col gap-3">

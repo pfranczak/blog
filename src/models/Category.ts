@@ -18,7 +18,7 @@ export interface RecentPost {
 	slug: string;
 	title: string;
 	excerpt: string;
-	content: Content;
+	content: string;
 	id: string;
 	author: Author;
 }

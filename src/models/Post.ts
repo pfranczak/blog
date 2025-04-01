@@ -14,11 +14,6 @@ export interface Category {
 	slug: string;
 }
 
-export interface Content {
-	text: string;
-	markdown: string;
-}
-
 export interface Post {
 	author: Author;
 	createdAt: string;
@@ -26,7 +21,7 @@ export interface Post {
 	slug: string;
 	id: string;
 	excerpt: string;
-	content: Content;
+	content: string;
 	image: Photo;
 }
 

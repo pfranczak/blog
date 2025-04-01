@@ -29,10 +29,7 @@ export const getPosts = async () => {
                 image {
                     url
                 }
-                content {
-                    markdown
-                    text
-                }
+                content
               }
             }
           }
@@ -67,10 +64,7 @@ export const getPostDetails = async (slug: string) => {
             image {
                 url
             }
-            content {
-                text
-                markdown
-            }
+            content
           }
         }
   `;

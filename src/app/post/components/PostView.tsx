@@ -11,7 +11,7 @@ interface PostViewProps {
 }
   
 export function PostView({ post }: PostViewProps) {
-    const { time, unit } = useReadTime(post.content.text);
+    const { time, unit } = useReadTime(post.content ?? "");
 
     return (
         <article className="flex flex-col gap-6 max-w-4xl mx-auto text-gray-900 dark:text-gray-200">
@@ -31,7 +31,7 @@ export function PostView({ post }: PostViewProps) {
                 height={400}
                 className="w-full h-[400px] object-cover rounded-lg shadow-lg"
             />
-            <Markdown>{post.content.markdown}</Markdown>
+            <Markdown>{post.content}</Markdown>
         </article>
     );
 }
