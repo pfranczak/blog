@@ -19,14 +19,16 @@ export function PostView({ post }: PostViewProps) {
                 <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-200">
                 {post.title}
                 </h1>
-                <div className="text-xl text-gray-600 dark:text-gray-400 flex justify-between">
-                <span><FormattedDate date={post.createdAt}/> - {time} {unit}</span>
-                <Author name={post.author.name} id={post.author.id}/>
+                <div className="text-xl text-gray-600 dark:text-gray-400 flex flex-col md:flex-row justify-between">
+                    <span><FormattedDate date={post.createdAt}/> - {time} {unit}</span>
+                    <Author name={post.author.name} id={post.author.id}/>
                 </div>
             </div>
             <Image 
                 src={post.image.url} 
                 alt={post.title}
+                width={800}
+                height={400}
                 className="w-full h-[400px] object-cover rounded-lg shadow-lg"
             />
             <Markdown>{post.content.markdown}</Markdown>

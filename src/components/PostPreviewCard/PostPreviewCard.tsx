@@ -23,7 +23,9 @@ export function PostPreviewCard({ post }: PostPreviewCardProps) {
       <h3 className="text-xl/7 text-gray-600 dark:text-gray-400 sm:truncate sm:text-2xl sm:tracking-tight">
         <FormattedDate date={post.createdAt}/> - {time} {unit}
       </h3>
-      <h2 className="text-2xl/7 font-bold text-gray-900 dark:text-gray-200 sm:truncate sm:text-3xl sm:tracking-tight">{post.title}</h2>
+      <h2 className="text-2xl/7 font-bold text-gray-900 dark:text-gray-200 sm:truncate sm:text-3xl sm:tracking-tight">
+        <Link href={`post/${post.slug}`}>{post.title}</Link>
+      </h2>
       <p className="text-lg text-gray-900 dark:text-gray-200">{post.excerpt}</p>
       <Link href={`/post/${post.slug}`} className="text-blue-500 text-lg font-medium">Learn more</Link>
     </div>
