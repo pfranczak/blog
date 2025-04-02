@@ -11,7 +11,6 @@ export default async function Category({ params }: { params: Promise<{ slug: str
 
     const { posts } = postsObj;
 
-    console.log(posts[0])
 
     if (posts.length === 0) {
         return (

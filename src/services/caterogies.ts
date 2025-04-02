@@ -30,10 +30,7 @@ export const getCategories = async () => {
                   image {
                       url
                   }
-                  content {
-                      text
-                      markdown
-                  }
+                  content
                   id
                   author {
                     id
