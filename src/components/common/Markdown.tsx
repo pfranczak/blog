@@ -10,6 +10,7 @@ import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javasc
 import scss from 'react-syntax-highlighter/dist/cjs/languages/prism/scss'
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown'
 import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json'
+import remarkGfm from 'remark-gfm'
 
 SyntaxHighlighter.registerLanguage('tsx', tsx)
 SyntaxHighlighter.registerLanguage('jsx', jsx)
@@ -68,7 +69,7 @@ type Props = {
 const Markdown = ({ children }: Props) => {
 	return (
 		//@ts-expect-error because yes
-		<ReactMarkdown components={MarkdownComponents}>
+		<ReactMarkdown components={MarkdownComponents} remarkPlugins={[remarkGfm]}>
 			{children}
 		</ReactMarkdown>
 	);
