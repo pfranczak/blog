@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default async function AuthorPage({ params }: { params: Promise<{ slug: string } >}) {
   const { slug } = await params;
   const authorObj = await getAuthor(slug);
-
+  console.log(authorObj);
   if (!authorObj) {
     return <div>Author not found</div>;
   }
